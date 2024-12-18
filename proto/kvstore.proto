@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "distributed-kvstore/proto";
+
+package kvstore;
+
+service KeyValueService {
+  // Key Value Operations
+  rpc Set(SetRequest) returns (SetResponse) {}
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+
+  // Cluster Management
+  rpc AddNode(NodeRequest) returns (NodeResponse) {}
+  rpc RemoveNode(NodeRequest) returns (NodeResponse) {}
+}
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  string value = 1;
+  bool found = 2;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+message NodeRequest {
+  string address = 1;
+}
+
+message NodeResponse {
+  bool success = 1;
+  string error = 2;
+}
