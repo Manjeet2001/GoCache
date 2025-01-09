@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-option go_package = "distributed-kvstore/proto";
+option go_package = "GoCache/proto";
 
 package kvstore;
 
 service KeyValueService {
-  // Key Value Operations
+  // Basic Key-Value Operations
   rpc Set(SetRequest) returns (SetResponse) {}
   rpc Get(GetRequest) returns (GetResponse) {}
   rpc Delete(DeleteRequest) returns (DeleteResponse) {}

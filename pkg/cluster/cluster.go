@@ -23,7 +23,7 @@ func NewConsistentHash() *ConsistentHash {
 	}
 }
 
-func (ch *ConsistentHash) HashKey(key string) uint32 {
+func (ch ConsistentHash) HashKey(key string) uint32 {
 	return crc32.ChecksumIEEE([]byte(key))
 }
 
